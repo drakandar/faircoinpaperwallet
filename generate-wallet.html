@@ -99,6 +99,13 @@ function setCryptoCurrency(toThis) {
 	  window.WIFPrefix = '5';
 	  window.compressedWIFPrefix = '[LK]';
 	  break;
+	case 'FairCoin':
+		window.networkVersion = 0x5f;
+		window.privateKeyPrefix = 0xdf;
+		window.WIFPrefix = '8';
+		window.compressedWIFPrefix = '[aZ]';
+		document.title = 'FairCoin paper wallet generator';
+		break;
 	case 'Litecoin':
 		window.networkVersion = 0x30;
 		window.privateKeyPrefix = 0xb0;
@@ -121,8 +128,8 @@ function setCryptoCurrency(toThis) {
 		document.title = 'Bitcoin TESTNET paper wallet generator';
 		break;
 	default:
-	  alert ('Invalid cryptocurrency "' + toThis + '" at initialization. Defaulting to Bitcoin.');
-	  setCryptoCurrency('Bitcoin');		
+	  alert ('Invalid cryptocurrency "' + toThis + '" at initialization. Defaulting to FairCoin.');
+	  setCryptoCurrency('FairCoin');
 	} // eof switch
 	return (true);
 }
@@ -138,6 +145,9 @@ var myDesign = getParameterByName('design');
 window.suppliesURL = 'https://bitcoinpaperwallet.com/?p=' + myDesign + '#purchase';
 
 switch (myDesign) {
+	case 'alt-faircoin':
+		setCryptoCurrency('FairCoin');
+		break;
 	case 'alt-litecoin':
 		setCryptoCurrency('Litecoin');
 		break;
@@ -148,7 +158,7 @@ switch (myDesign) {
 		setCryptoCurrency('Testnet');
 		break;
 	default:
-	setCryptoCurrency('Bitcoin');
+	setCryptoCurrency('FairCoin');
 	window.suppliesURL = 'https://bitcoinpaperwallet.com/#purchase'; // remove special currency flag
 } 
 
@@ -13818,3 +13828,4 @@ function setDenomination(valueAndUnit) {
 
 </body>
 </html>
+
